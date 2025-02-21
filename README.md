@@ -15,7 +15,24 @@ This repository contains the configuration for running **Odoo 18** with **Postgr
 ├── docker-compose.yml      # Docker Compose file
 └── README.md               # Documentation
 ```
+---
 
+## 🛠️ Requirements
+
+### **Docker and Docker Compose**
+Make sure you have Docker and Docker Compose installed on your system.
+
+- **Docker**: Install from [Docker official site](https://docs.docker.com/get-docker/)
+- **Docker Compose**: Install from [Docker Compose official site](https://docs.docker.com/compose/install/)
+
+Check if Docker is installed:
+```bash
+docker --version
+```
+Check if Docker Compose is installed:
+```bash
+docker-compose --version
+```
 ---
 
 ## 🚀 How to Use
