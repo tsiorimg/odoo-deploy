@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  odoo:
+    image: odoo:18.0
+    container_name: odoo_18c
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    command:
+      [
+        "sh",
+        "-c",
+        "pip3 install -r /etc/odoo/requirements.txt --break-system-packages && /usr/bin/odoo --db_password=${POSTGRES_PASSWORD}" 
+      ]
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./config:/etc/odoo
+      - odoo-data:/var/lib/odoo
+    networks:
+      - odoo_network
+
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    container_name: postgres_15
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - odoo_network
+
+volumes:
+  odoo-data:
+  db-data:
+
+networks:
+  odoo_network:
+    driver: bridge
