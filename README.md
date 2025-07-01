@@ -1,3 +1,8 @@
+# Docker
+## Installation
+```bash
+curl -fsSL https://raw.githubusercontent.com/tsiorimg/odoo-deploy/main/install_docker.sh | sudo bash
+```
 # Odoo 18 Docker Setup
 
 This repository contains the configuration for running **Odoo 18** with **PostgreSQL 15** using **Docker Compose**.
